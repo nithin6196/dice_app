@@ -10,7 +10,7 @@ class DiceScreen extends StatefulWidget {
 }
 
 class _DiceScreenState extends State<DiceScreen> {
-  int randomNumber = 2;
+  int? randomNumber;
   List imagePaths = [
     "assets/d1.png",
     "assets/d2.png",
@@ -28,7 +28,9 @@ class _DiceScreenState extends State<DiceScreen> {
             randomNumber = Random().nextInt(6);
             setState(() {});
           },
-          child: Image.asset(imagePaths[randomNumber]),
+          child: Image.asset(randomNumber == null
+              ? "assets/start button.png"
+              : imagePaths[randomNumber!]),
         ),
       ),
     );
